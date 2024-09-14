@@ -4,35 +4,28 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Casts\Attribute;
-use App\Models\EscolaMagiaModel;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 
-class MagiaModel extends Model
+use Illuminate\Database\Eloquent\Casts\Attribute;
+
+class DivindadeModel extends Model
 {
     use HasFactory;
 
-    public $table = "magia";
+    public $table = "divindade";
 
-    public $primaryKey = "id_magia";
+    public $primaryKey = "id_divindade";
 
     public $filalble = [
         "nome",
-        "descricao",
-        "componentes",
-        "ritual",
-        "id_escola_magia",
-        "tipo_magia",
-        "nivel",
-        "duracao",
-        "alcance",
-        "acao"
+        "alcunha",
+        "alinhamento",
+        "dominios",
+        "posto",
+        "arma_predileta",
+        "aspecto",
+        "descricao"
     ];
 
-    public function EscolaMagia()
-    {
-        return $this->hasOne(EscolaMagiaModel::class, "id_escola_magia", "id_escola_magia");
-    }
 
     protected function exibir(): Attribute
     {
@@ -41,22 +34,27 @@ class MagiaModel extends Model
             [
                 [
                     "descricao" => '#',
-                    'campo' => "id_magia",
+                    'campo' => "id_divindade",
                     'link' => null,
                     'id' => true
                 ], 
                 [
-                    'descricao' => "Nome",
-                    'campo' => 'nome',
+                    'descricao' => "Alinhamento",
+                    'campo' => 'alinhamento',
                     'link' => null,
                     'id' => false
                 ],
                 [
-                    'descricao' => 'Escola',
-                    'campo' => 'nome',
+                    'descricao' => 'Dominios',
+                    'campo' => 'dominios',
                     'link' => null,
                     'id' => false,
-                    'parent' => 'EscolaMagia'
+                ],
+                [
+                    'descricao' => 'Posto',
+                    'campo' => 'posto',
+                    'link' => null,
+                    'id' => false,
                 ]
             ]
         );
@@ -69,14 +67,13 @@ class MagiaModel extends Model
             [
                 [
                     "descricao" => 'edit',
-                    'url' => 'magia/form/',
+                    'url' => 'divindade/form/',
                     'args' => [
-                        'id_magia'
+                        'id_divindade'
                     ],
                     'classe' => 'far fa-edit'
                 ]
             ]
         );
     }
-
 }

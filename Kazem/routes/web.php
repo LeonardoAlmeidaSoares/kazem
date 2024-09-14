@@ -81,3 +81,31 @@ Route::controller(MagiaController::class)->group(function () {
     Route::get('magia', 'index');
     Route::match(['get', 'post'], 'magia/form/{id}', 'form');
 });
+
+use App\Http\Controllers\ArmaController;
+
+Route::controller(ArmaController::class)->group(function () {
+    Route::get('arma', 'index');
+    Route::match(['get', 'post'], 'arma/form/{id}', 'form');
+});
+
+use App\Http\Controllers\ArmaduraController;
+
+Route::controller(ArmaduraController::class)->group(function () {
+    Route::get('armadura', 'index');
+    Route::match(['get', 'post'], 'armadura/form/{id}', 'form');
+});
+
+use App\Http\Controllers\EquipamentoController;
+
+Route::controller(EquipamentoController::class)->group(function () {
+    Route::get('equipamento', 'index');
+    Route::match(['get', 'post'], 'equipamento/form/{id}', 'form');
+});
+
+use App\Http\Controllers\DivindadeController;
+
+Route::controller(DivindadeController::class)->group(function () {
+    Route::get('divindade', 'index');
+    Route::match(['get', 'post'], 'divindade/form/{id}', 'form');
+});

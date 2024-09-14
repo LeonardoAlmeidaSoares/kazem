@@ -34,6 +34,14 @@ class BuscaController extends Controller
                     select 'Continentes' as Tipo, nome, 'Continente do cenário', concat('continente/form/', id_continente) as link from kz_continente
                     UNION 
                     select 'Talento' as Tipo, nome, descricao, concat('talento/form/', id_talento) as link from kz_talento
+                    UNION
+                    select 'Armas' as Tipo, nome, 'Armas', concat('arma/form/', id_arma) as link from kz_arma
+					UNION
+                    select 'Armaduras' as Tipo, nome, 'Armaduras', concat('armadura/form/', id_armadura) as link from kz_armadura
+                    UNION
+                    select 'Equipamentos' as Tipo, descricao, 'Equipamentos', concat('equipamentos/form/', id_equipamento) as link from kz_equipamento
+                    UNION
+                    select 'Divindades' as Tipo, nome, 'Divindades', concat('divindades/form/', id_divindade) as link from kz_divindade
                     ) x
                 where titulo like '%$termo%'";
 

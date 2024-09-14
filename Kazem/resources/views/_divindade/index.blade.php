@@ -1,6 +1,6 @@
 @extends('template.admin')
 
-@section('title', ucwords('Escola de Magia'))
+@section('title', ucwords('Divindade'))
 
 @section('content')
 
@@ -16,11 +16,11 @@
 
             <div class="row flex-between-center">
                 <div class="col-6 col-sm-auto d-flex align-items-center pe-0">
-                    <h5 class="fs-0 mb-0 text-nowrap py-2 py-xl-0">Gestão de {{ ucwords('Escola de Magia') }}s </h5>
+                    <h5 class="fs-0 mb-0 text-nowrap py-2 py-xl-0">Gestão de {{ ucwords('Divindade') }}s </h5>
                 </div>
                 <div class="col-6 col-sm-auto ms-auto text-end ps-0">
                     <div id="table-purchases-replace-element">
-                        <a href="{{ url(strtolower('escolamagia') . '/form/0') }}">
+                        <a href="{{ url(strtolower('Divindade') . '/form/0') }}">
                             <button class="btn btn-falcon-default btn-sm" type="button">
                                 <svg class="svg-inline--fa fa-plus fa-w-14" data-fa-transform="shrink-3 down-2"
                                     aria-hidden="true" focusable="false" data-prefix="fas" data-icon="plus" role="img"

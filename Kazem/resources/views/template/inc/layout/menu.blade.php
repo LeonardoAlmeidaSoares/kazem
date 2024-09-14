@@ -46,7 +46,18 @@
                         </div>
                     </a>
 
-                    
+                    <a class="nav-link" href="{{ url("armadura")}}" role="button">
+                        <div class="d-flex align-items-center"><span class="nav-link-icon"><span
+                                    class="fas fa-user"></span></span><span class="nav-link-text ps-1">Armaduras</span>
+                        </div>
+                    </a>
+
+                    <a class="nav-link" href="{{ url("arma")}}" role="button">
+                        <div class="d-flex align-items-center"><span class="nav-link-icon"><span
+                                    class="fas fa-user"></span></span><span class="nav-link-text ps-1">Armas</span>
+                        </div>
+                    </a>
+
                     <a class="nav-link" href="{{ url("classe")}}" role="button">
                         <div class="d-flex align-items-center"><span class="nav-link-icon"><span
                                     class="fas fa-user"></span></span><span class="nav-link-text ps-1">Classes</span>
@@ -62,6 +73,18 @@
                     <a class="nav-link" href="{{ url("cidade")}}" role="button">
                         <div class="d-flex align-items-center"><span class="nav-link-icon"><span
                                     class="fas fa-user"></span></span><span class="nav-link-text ps-1">Cidades</span>
+                        </div>
+                    </a>
+
+                    <a class="nav-link" href="{{ url("divindade")}}" role="button">
+                        <div class="d-flex align-items-center"><span class="nav-link-icon"><span
+                                    class="fas fa-user"></span></span><span class="nav-link-text ps-1">Divindades</span>
+                        </div>
+                    </a>
+
+                    <a class="nav-link" href="{{ url("equipamento")}}" role="button">
+                        <div class="d-flex align-items-center"><span class="nav-link-icon"><span
+                                    class="fas fa-user"></span></span><span class="nav-link-text ps-1">Equipamento</span>
                         </div>
                     </a>
 

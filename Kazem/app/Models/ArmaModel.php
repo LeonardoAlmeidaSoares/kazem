@@ -4,34 +4,33 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Casts\Attribute;
-use App\Models\EscolaMagiaModel;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 
-class MagiaModel extends Model
+use Illuminate\Database\Eloquent\Casts\Attribute;
+
+class ArmaModel extends Model
 {
     use HasFactory;
 
-    public $table = "magia";
+    public $table = "arma";
 
-    public $primaryKey = "id_magia";
+    public $primaryKey = "id_arma";
 
     public $filalble = [
         "nome",
-        "descricao",
-        "componentes",
-        "ritual",
-        "id_escola_magia",
-        "tipo_magia",
-        "nivel",
-        "duracao",
-        "alcance",
-        "acao"
+        "tipo",
+        "valor",
+        "unidade",
+        "dano",
+        "peso",
+        "propriedades",
+        "descricao"
     ];
 
-    public function EscolaMagia()
+    public function valorArma(): Attribute
     {
-        return $this->hasOne(EscolaMagiaModel::class, "id_escola_magia", "id_escola_magia");
+        return new Attribute(
+            get: fn () => strval($this->valor) .' ' . $this->unidade
+        );
     }
 
     protected function exibir(): Attribute
@@ -41,7 +40,7 @@ class MagiaModel extends Model
             [
                 [
                     "descricao" => '#',
-                    'campo' => "id_magia",
+                    'campo' => "id_arma",
                     'link' => null,
                     'id' => true
                 ], 
@@ -52,11 +51,16 @@ class MagiaModel extends Model
                     'id' => false
                 ],
                 [
-                    'descricao' => 'Escola',
-                    'campo' => 'nome',
+                    'descricao' => 'Valor',
+                    'campo' => 'valorArma',
                     'link' => null,
                     'id' => false,
-                    'parent' => 'EscolaMagia'
+                ],
+                [
+                    'descricao' => 'Dano',
+                    'campo' => 'dano',
+                    'link' => null,
+                    'id' => false,
                 ]
             ]
         );
@@ -69,9 +73,9 @@ class MagiaModel extends Model
             [
                 [
                     "descricao" => 'edit',
-                    'url' => 'magia/form/',
+                    'url' => 'arma/form/',
                     'args' => [
-                        'id_magia'
+                        'id_arma'
                     ],
                     'classe' => 'far fa-edit'
                 ]
