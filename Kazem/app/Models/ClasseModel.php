@@ -18,7 +18,8 @@ class ClasseModel extends Model
     public $filalble = [
         "nome",
         "somente_npc",
-        "descricao"
+        "descricao",
+        "dado_vida"
     ];
 
     protected function exibir(): Attribute

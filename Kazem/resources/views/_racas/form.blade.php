@@ -27,11 +27,23 @@
         <form action="{{ Request::url() }}" method="POST">
             @csrf
             <div class="card-body bg-light">
-                <div class="tab-content">
-                    <div>
-                        <div class="mb-3">
+                <div class="tab-content container">
+                    <div class="row">
+                        <div class="mb-3 col-9">
                             <label class="form-label" for="titulo">Nome: </label>
                             <input class="form-control" id="titulo" name="titulo" required type="text" placeholder="Nome da Raça" value="{{ $model->titulo }}">
+                        </div>
+
+                        <div class="mb-3 col-3">
+                            <label class="form-label" for="deslocamento">Deslocamento: </label>
+                            <input class="form-control" id="deslocamento" name="deslocamento" type="text" placeholder="Deslocamento" value="{{ $model->deslocamento }}">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="mb-3 col-12">
+                            <label class="form-label" for="Descrição">Descrição: </label>
+                            <textarea class="form-control" id="descricao" rows=10 name="descricao"> {!! $model->descricao !!}</textarea>
                         </div>
                     </div>
                 </div>
@@ -41,6 +53,7 @@
                 </div>
 
             </div>
+
         </form>
     </div>
 

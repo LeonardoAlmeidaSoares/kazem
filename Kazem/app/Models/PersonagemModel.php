@@ -5,19 +5,59 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+
 
 class PersonagemModel extends Model
 {
     use HasFactory;
 
-    public $table = "jogador";
+    public $table = "personagem";
 
-    public $primaryKey = "id_jogador";
+    public $primaryKey = "id_personagem";
 
-    public $filalble = [
+    public $fillable = [
         "nome",
-        "status"
+        "id_raca", 
+        "id_antecedente", 
+        "id_jogador",
+        "id_cidade",
+        "id_divindade",
+        "alinhamento",
+        "imagem",  
+        "attr_for", 
+        "attr_des",
+        "attr_con",
+        "attr_int",
+        "attr_sab",
+        "attr_car"
     ];
+
+    public function atributos(): HasOne
+    {
+        return $this->hasOne(PersonagemAtributoModel::class, "id_personagem", "id_personagem");
+    }
+
+    public function pericias(): HasMany
+    {
+        return $this->hasMany(PersonagemPericiaModel::class, "id_personagem", "id_personagem");
+    }
+
+    public function texto(): HasOne
+    {
+        return $this->hasOne(PersonagemTextoModel::class, "id_personagem", "id_personagem");
+    }
+
+    public function riqueza(): HasOne
+    {
+        return $this->hasOne(PersonagemRiquezaModel::class, "id_personagem", "id_personagem");
+    }
+
+    public function armas(): HasMany
+    {
+        return $this->hasMany(PersonagemArmaModel::class, "id_personagem", "id_personagem");
+    }
 
     protected function exibir(): Attribute
     {
@@ -47,10 +87,11 @@ class PersonagemModel extends Model
             [
                 [
                     "descricao" => 'edit',
-                    'url' => 'jogador/form/',
+                    'url' => 'personagem/ficha/',
                     'args' => [
-                        'id_jogador'
+                        'id_personagem'
                     ],
+                    "target" => "_blank",
                     'classe' => 'fas fa-edit'
                 ]
             ]

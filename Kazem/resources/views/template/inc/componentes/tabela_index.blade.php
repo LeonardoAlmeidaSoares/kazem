@@ -43,7 +43,7 @@
                     @endforeach
                     <td>
                         @foreach($item->links as $chave => $campo)
-                            <a href="{{ url($campo['url']) . '/' . $item->{$campo["args"][0]} }} ">
+                            <a href="{{ url($campo['url']) . '/' . $item->{$campo["args"][0]} }}" @if(isset($campo["target"])) target="_blank" @endif >
                                 <span class="{{ $campo["classe"] }} text-danger fs-1"></span>
                             </a>
                         @endforeach

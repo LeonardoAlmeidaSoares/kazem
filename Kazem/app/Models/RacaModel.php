@@ -15,7 +15,9 @@ class RacaModel extends Model
     public $primaryKey = "id_raca";
 
     public $filalble = [
-        "titulo"
+        "titulo",
+        "deslocamento",
+        "descricao"
     ];
 
     protected function exibir(): Attribute

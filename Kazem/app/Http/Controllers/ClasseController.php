@@ -38,6 +38,7 @@ class ClasseController extends Controller
             $model->nome = $request->nome;
             $model->somente_npc = $request->somente_npc;
             $model->descricao = $request->descricao;
+            $model->dado_vida = $request->dado_vida;
 
             if ($model->save()){
                 return redirect("classe")->with("msg_sucesso", "Cadastro Realizado com Sucesso");

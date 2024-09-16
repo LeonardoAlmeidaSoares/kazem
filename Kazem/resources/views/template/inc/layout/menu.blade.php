@@ -106,6 +106,12 @@
                         </div>
                     </a>
 
+                    <a class="nav-link" href="{{ url("personagem")}}" role="button">
+                        <div class="d-flex align-items-center"><span class="nav-link-icon"><span
+                                    class="fas fa-user"></span></span><span class="nav-link-text ps-1">Personagens</span>
+                        </div>
+                    </a>
+
                     <a class="nav-link" href="{{ url("raca")}}" role="button">
                         <div class="d-flex align-items-center"><span class="nav-link-icon"><span
                                     class="fas fa-user"></span></span><span class="nav-link-text ps-1">Raças</span>

@@ -38,6 +38,8 @@ class RacaController extends Controller
         if ($request->getMethod() == "POST")
         {
             $model->titulo = $request->titulo;
+            $model->deslocamento = $request->deslocamento;
+            $model->descricao = $request->descricao;
 
             if ($model->save()){
                 return redirect("raca")->with("msg_sucesso", "Cadastro Realizado com Sucesso");

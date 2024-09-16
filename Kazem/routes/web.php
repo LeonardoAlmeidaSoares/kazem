@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BuscaController;
+use App\Livewire\FichaPersonagem;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RacaController;
 use App\Http\Controllers\ContinenteController;
@@ -9,6 +10,9 @@ use App\Http\Controllers\CidadeController;
 use App\Http\Controllers\JogadorController;
 use App\Http\Controllers\AntecedenteController;
 use App\Http\Controllers\PersonagemController;
+
+
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -20,9 +24,9 @@ Route::controller(BuscaController::class)->group(function () {
 
 Route::controller(PersonagemController::class)->group(function () {
     Route::get('personagem', 'index');
-    Route::match(['get', 'post'], 'personagem/form/{id}', 'form');
-    Route::get('personagem/ficha/{id}', 'ficha');
 });
+
+Route::get('/personagem/ficha/{id}', FichaPersonagem::class);
 
 Route::controller(RacaController::class)->group(function () {
     Route::get('raca', 'index');
