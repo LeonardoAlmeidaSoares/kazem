@@ -53,7 +53,12 @@
                     <td>
                         @foreach($item->links as $chave => $campo)
 
-                            <a href="{{ url($campo['url']) . '/' . $item->{$campo["args"][0]} }}" @if(isset($campo["target"])) target="_blank" @endif title="{{ $campo["title"] }}">
+                            <?php $link = ""; ?>
+                            @foreach($campo["args"] as $arg)
+                                <?php $link .= "/" . $item->{$arg} ?>
+                            @endforeach
+
+                            <a href="{{ url($campo['url']) . $link }}" @if(isset($campo["target"])) target="_blank" @endif title="{{ $campo["title"] }}">
                                 <button type="button" class="btn btn-inverse-primary btn-rounded btn-icon">
                                     <i class="{{ $campo["classe"] }}"></i>
                                 </button>

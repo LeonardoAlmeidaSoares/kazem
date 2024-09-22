@@ -22,9 +22,7 @@
     <link rel="stylesheet" href="{{ url('assets/css/style.css') }}">
     <!-- endinject -->
     <link rel="shortcut icon" href="{{ url('assets/images/favicon.png') }}" />
-    
-    
-    
+        
 </head>
 
 <body>
@@ -33,10 +31,10 @@
         <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
                 <a class="navbar-brand brand-logo me-5" href="{{ url('') }}">
-                    <img src="../../assets/images/logo.svg" class="me-2" alt="logo" />
+                    <img src="{{ url("assets/images/logo.svg")}}" class="me-2" alt="logo" />
                 </a>
                 <a class="navbar-brand brand-logo-mini" href="{{ url('') }}">
-                    <img src="../../assets/images/logo-mini.svg" alt="logo" />
+                    <img src="{{ url('assets/images/logo-mini.svg')}}" alt="logo" />
                 </a>
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
@@ -59,7 +57,7 @@
                         </div>
                     </li>
                 </ul>
-                <ul class="navbar-nav navbar-nav-right">
+                <!--ul class="navbar-nav navbar-nav-right">
                     <li class="nav-item dropdown">
                         <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#"
                             data-bs-toggle="dropdown">
@@ -107,7 +105,7 @@
                     <li class="nav-item nav-profile dropdown">
                         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
                             id="profileDropdown">
-                            <img src="../../assets/images/faces/face28.jpg" alt="profile" />
+                            <img src="{{ url("assets/images/faces/face28.jpg")}}" alt="profile" />
                         </a>
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown"
                             aria-labelledby="profileDropdown">
@@ -122,7 +120,7 @@
                             <i class="icon-ellipsis"></i>
                         </a>
                     </li>
-                </ul>
+                </ul-->
                 <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
                     data-toggle="offcanvas">
                     <span class="icon-menu"></span>
@@ -198,7 +196,7 @@
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
-    <script src="../../assets/vendors/js/vendor.bundle.base.js"></script>
+    <script src="{{ url('assets/vendors/js/vendor.bundle.base.js') }}"></script>
     <script src="https://cdn.datatables.net/v/dt/dt-2.1.6/datatables.min.js"></script>
     <script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
     <!-- endinject -->
@@ -216,13 +214,6 @@
 
         </script>
     <!-- End plugin js for this page -->
-    <!-- inject:js -->
-    <script src="../../assets/js/off-canvas.js"></script>
-    <script src="../../assets/js/template.js"></script>
-    <script src="../../assets/js/settings.js"></script>
-    <script src="../../assets/js/todolist.js"></script>
-
-    <!-- endinject -->
     <!-- Custom js for this page-->
     <!-- End custom js for this page-->
 </body>

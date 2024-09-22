@@ -3,23 +3,30 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use App\Models\RacaModel;
 
-class RacaModel extends Model
+
+class RacaVarianteModel extends Model
 {
     use HasFactory;
 
-    public $table = "raca";
+    public $table = "raca_variante";
 
-    public $primaryKey = "id_raca";
+    public $primaryKey = "id_raca_variante";
 
     public $filalble = [
-        "titulo",
-        "deslocamento",
-        "descricao",
-        "id_raca_pai"
+        "nome",
+        "id_raca",
+        "descricao"
     ];
+
+    public function RacaPai()
+    {
+        return $this->hasOne(RacaModel::class, "id_raca", "id_raca");
+    }
 
     protected function exibir(): Attribute
     {
@@ -28,13 +35,13 @@ class RacaModel extends Model
             [
                 [
                     "descricao" => '#',
-                    'campo' => "id_raca",
+                    'campo' => "id_raca_variante",
                     'link' => null,
                     'id' => true
                 ], 
                 [
-                    'descricao' => "Descrição",
-                    'campo' => 'titulo',
+                    'descricao' => "Nome",
+                    'campo' => 'nome',
                     'link' => null,
                     'id' => false
                 ] 
@@ -49,21 +56,13 @@ class RacaModel extends Model
             [
                 [
                     "descricao" => 'edit',
-                    'url' => 'raca/form/',
+                    'url' => 'variante/form/',
                     'args' => [
-                        'id_raca'
+                        'id_raca',
+                        'id_raca_variante'
                     ],
-                     'title' => 'Editar',
+                    'title' => 'Editar',
                     'classe' => 'mdi mdi-tooltip-edit'
-                ],
-                [
-                    "descricao" => 'variantes',
-                    'url' => 'racavariante/',
-                    'args' => [
-                        'id_raca'
-                    ],
-                    'title' => 'Variantes',
-                    'classe' => 'mdi mdi-account-settings'
                 ]
             ]
         );
@@ -75,16 +74,10 @@ class RacaModel extends Model
             get: fn () => 
             [
                 [
-                    "name" => 'titulo',
+                    "name" => 'nome',
                     "label" => "Nome",
                     'type' => 'text',
                     'class'=> 'col-9'
-                ], 
-                [
-                    "name" => 'deslocamento',
-                    "label" => "Deslocamento",
-                    'type' => 'text',
-                    'class'=> 'col-3'
                 ], 
                 [
                     "name" => 'descricao',
@@ -92,8 +85,13 @@ class RacaModel extends Model
                     'type' => 'textarea',
                     'class'=> 'col-12'
                 ], 
+                [
+                    "name" => 'aproveitar_descricao',
+                    "label" => "Aproveitar texto da classe original",
+                    'type' => 'sim_nao',
+                    'class'=> 'col-12'
+                ], 
             ]
         );
     }
-
 }
