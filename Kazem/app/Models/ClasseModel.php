@@ -54,8 +54,43 @@ class ClasseModel extends Model
                     'args' => [
                         'id_classe'
                     ],
-                    'classe' => 'far fa-edit'
+                    'title' => 'Editar',
+                    'classe' => 'mdi mdi-tooltip-edit'
                 ]
+            ]
+        );
+    }
+
+    protected function form(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => 
+            [
+                [
+                    "name" => 'nome',
+                    "label" => "Nome",
+                    'type' => 'text',
+                    'class'=> 'col-10'
+                ], 
+                [
+                    "name" => 'dado_vida',
+                    "label" => "Dado de Vida",
+                    'type' => 'select',
+                    'content' => ['4' => 'D4', '6'=> 'D6', '8' => 'D8', '10' => 'D10', '12' => 'D12'],
+                    'class'=> 'col-2'
+                ], 
+                [
+                    "name" => 'descricao',
+                    "label" => "Descrição",
+                    'type' => 'textarea',
+                    'class'=> 'col-12'
+                ], 
+                [
+                    "name" => 'somente_npc',
+                    "label" => "Somente NPCs",
+                    'type' => 'sim_nao',
+                    'class'=> 'col-12'
+                ], 
             ]
         );
     }

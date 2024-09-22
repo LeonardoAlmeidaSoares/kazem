@@ -65,6 +65,52 @@ class ArmaduraModel extends Model
         );
     }
 
+    protected function form(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => 
+            [
+                [
+                    "name" => 'nome',
+                    "label" => "Nome",
+                    'type' => 'text',
+                    'class'=> 'col-6'
+                ], 
+                [
+                    "name" => 'ca',
+                    "label" => "CA",
+                    'type' => 'text',
+                    'class'=> 'col-1'
+                ], 
+                [
+                    "name" => 'forca_necessaria',
+                    "label" => "Força",
+                    'type' => 'text',
+                    'class'=> 'col-1'
+                ],
+                [
+                    "name" => 'peso',
+                    "label" => "Peso",
+                    'type' => 'text',
+                    'class'=> 'col-2'
+                ], 
+                [
+                    "name" => 'valor',
+                    "label" => "Valor",
+                    'type' => 'valor_unidade',
+                    'class'=> 'col-2'
+                ], 
+               
+                [
+                    "name" => 'desv_furtividade',
+                    "label" => "Desvantagem em Furtividade",
+                    'type' => 'sim_nao',
+                    'class'=> 'col-12'
+                ], 
+            ]
+        );
+    }
+
     protected function links(): Attribute
     {
         return Attribute::make(
@@ -76,7 +122,8 @@ class ArmaduraModel extends Model
                     'args' => [
                         'id_armadura'
                     ],
-                    'classe' => 'far fa-edit'
+                    "title" => "Editar",
+                    'classe' => 'mdi mdi-tooltip-edit'
                 ]
             ]
         );

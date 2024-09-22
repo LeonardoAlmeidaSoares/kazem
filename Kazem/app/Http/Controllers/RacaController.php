@@ -20,7 +20,8 @@ class RacaController extends Controller
         //Listo todas as raçãs cadastradas
         $model =  RacaModel::all(); 
 
-        return view("_racas.index", [
+        return view("index", [
+            "titulo" => "Raças",
             "model" => $model
         ]);
     }
@@ -49,7 +50,8 @@ class RacaController extends Controller
         }
         else
         {
-            return view("_racas.form", [
+            return view("form", [
+                "titulo" => "Raças",
                 "model" => $model
             ]);
         }

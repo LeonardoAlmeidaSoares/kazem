@@ -20,7 +20,8 @@ class CidadeController extends Controller
         //Listo todas as raçãs cadastradas
         $model =  CidadeModel::all(); 
 
-        return view("_cidade.index", [
+        return view("index", [
+            "titulo" => "Cidades",
             "model" => $model
         ]);
     }

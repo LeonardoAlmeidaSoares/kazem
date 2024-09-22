@@ -58,7 +58,8 @@ class TalentoModel extends Model
                     'args' => [
                         'id_talento'
                     ],
-                    'classe' => 'far fa-edit'
+                     'title' => 'Editar',
+                    'classe' => 'mdi mdi-tooltip-edit'
                 ]
             ]
         );

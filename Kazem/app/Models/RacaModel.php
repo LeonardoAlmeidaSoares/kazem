@@ -17,7 +17,8 @@ class RacaModel extends Model
     public $filalble = [
         "titulo",
         "deslocamento",
-        "descricao"
+        "descricao",
+        "id_raca_pai"
     ];
 
     protected function exibir(): Attribute
@@ -52,8 +53,36 @@ class RacaModel extends Model
                     'args' => [
                         'id_raca'
                     ],
-                    'classe' => 'far fa-edit'
+                     'title' => 'Editar',
+                    'classe' => 'mdi mdi-tooltip-edit'
                 ]
+            ]
+        );
+    }
+
+    protected function form(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => 
+            [
+                [
+                    "name" => 'titulo',
+                    "label" => "Nome",
+                    'type' => 'text',
+                    'class'=> 'col-9'
+                ], 
+                [
+                    "name" => 'deslocamento',
+                    "label" => "Deslocamento",
+                    'type' => 'text',
+                    'class'=> 'col-3'
+                ], 
+                [
+                    "name" => 'descricao',
+                    "label" => "Descrição",
+                    'type' => 'textarea',
+                    'class'=> 'col-12'
+                ], 
             ]
         );
     }

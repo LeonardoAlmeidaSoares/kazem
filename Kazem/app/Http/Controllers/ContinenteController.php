@@ -19,7 +19,8 @@ class ContinenteController extends Controller
         //Listo todas os cadastradas
         $model =  ContinenteModel::all(); 
 
-        return view("_continente.index", [
+        return view("index", [
+            "titulo" => "Continentes",
             "model" => $model
         ]);
     }

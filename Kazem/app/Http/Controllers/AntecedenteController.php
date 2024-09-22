@@ -19,7 +19,8 @@ class AntecedenteController extends Controller
         //Listo todas as raçãs cadastradas
         $model =  AntecedenteModel::all(); 
 
-        return view("_antecedente.index", [
+        return view("index", [
+            "titulo" => "Antecedentes",
             "model" => $model
         ]);
     }
@@ -46,7 +47,8 @@ class AntecedenteController extends Controller
         }
         else
         {
-            return view("_antecedente.form", [
+            return view("form", [
+                "titulo" => "Antecedentes",
                 "model" => $model
             ]);
         }

@@ -38,7 +38,8 @@ class FichaPersonagem extends Component
     public $olhos_personagem = "Marrons";
     public $pele_personagem = "Cinza";
     public $cabelo_personagem = "Loiro";
-    public $caminho_imagem = "img/imagem_personagem.png";
+    public $imagem = "";
+    
     
     //FORÇA
     public $attr_for = 10;
@@ -155,6 +156,8 @@ class FichaPersonagem extends Component
 
     public $iniciativa = 0;
 
+    public $lastRace = 0;
+
     public $pericias = ["acrobacia" => "Des", "adestrar_animais" => "Sab", "arcanismo" => "Int", "atletismo" => "For", "atuacao" => "Car",
                          "enganacao" => "Car", "furtividade" => "Des", "historia" => "Int", "intimidacao" => "Car", "intuicao" => "Sab", 
                          "investigacao" => "Int", "medicina" => "Sab", "natureza" => "Int", "percepcao" => "Sab", "persuasao" => "Car", 
@@ -237,7 +240,14 @@ class FichaPersonagem extends Component
             $raca = RacaModel::find($this->id_raca);
             $this->deslocamento = strval($raca->deslocamento) . "m";
         }
+
+        $this->lastRace = $this->id_raca;
         
+    }
+
+    public function mudarimagem($request)
+    {
+        dd($request);
     }
 
     public function render(Request $request)
@@ -255,6 +265,10 @@ class FichaPersonagem extends Component
             $this->id_divindade = $this->personagem->id_divindade;
             $this->alinhamento = $this->personagem->alinhamento;
             $this->hp_maximo = $this->personagem->pv_total;
+
+            $this->imagem = $this->personagem->imagem;
+
+            $this->lastRace = $this->id_raca;
 
             //Caso não tenha referencia a atributos no banco de dados, crio uma pra ser adicionada posteriormente
             if (is_null($this->personagem->atributos))
@@ -372,10 +386,10 @@ class FichaPersonagem extends Component
             "racas" => $lista_racas,
             "divindades" => $lista_divindades,
             "jogadores" => $lista_jogadores,
-            "title" => $this->nome, 
+            "title" => $this->personagem->nome, 
             "pericias" => $this->pericias,
-            "lista_armas" => $lista_armas
-        ])->extends('template.ficha');;
+            "lista_armas" => $lista_armas,
+        ])->extends('template.ficha')->title($this->nome);
     }
 
     public function save()
@@ -394,6 +408,7 @@ class FichaPersonagem extends Component
         $this->personagem->id_divindade = $this->id_divindade;
         $this->personagem->alinhamento = $this->alinhamento;
         $this->personagem->pv_total = $this->hp_maximo;
+        $this->personagem->imagem = $this->imagem;
         
         if($this->personagem->save())
         {

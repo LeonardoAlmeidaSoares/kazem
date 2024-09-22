@@ -51,7 +51,8 @@ class JogadorModel extends Model
                     'args' => [
                         'id_jogador'
                     ],
-                    'classe' => 'fas fa-edit'
+                     'title' => 'Editar',
+                    'classe' => 'mdi mdi-tooltip-edit'
                 ]
             ]
         );

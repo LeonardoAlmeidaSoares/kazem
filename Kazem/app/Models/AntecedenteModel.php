@@ -40,6 +40,27 @@ class AntecedenteModel extends Model
         );
     }
 
+    protected function form(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => 
+            [
+                [
+                    "name" => 'titulo',
+                    "label" => "Nome",
+                    'type' => 'text',
+                    'class'=> 'col-12'
+                ], 
+                [
+                    "name" => 'descricao',
+                    "label" => "Descrição",
+                    'type' => 'textarea',
+                    'class'=> 'col-12'
+                ], 
+            ]
+        );
+    }
+
     protected function links(): Attribute
     {
         return Attribute::make(
@@ -51,7 +72,8 @@ class AntecedenteModel extends Model
                     'args' => [
                         'id_antecedente'
                     ],
-                    'classe' => 'far fa-edit'
+                    'title' => 'Editar',
+                    'classe' => 'mdi mdi-tooltip-edit'
                 ]
             ]
         );

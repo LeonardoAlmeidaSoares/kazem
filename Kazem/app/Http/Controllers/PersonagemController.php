@@ -19,7 +19,8 @@ class PersonagemController extends Controller
         //Listo todas as raçãs cadastradas
         $model =  PersonagemModel::all(); 
 
-        return view("_personagem.index", [
+        return view("index", [
+            "titulo" => "Personagens",
             "model" => $model
         ]);
     }
@@ -47,15 +48,23 @@ class PersonagemController extends Controller
         else
         {
             return view("_personagem.form", [
+                "titulo" => ($id==0)?"Personagem":"",
                 "model" => $model
             ]);
         }
     }
 
+    public function atualizarImagem(Request $request)
+    {
+        $model = PersonagemModel::find($request->id);
+        $model->imagem = str_replace("storage/","", $request->imagem);
+        $model->save();
+    }
+
     public function ficha(Request $request, $id=0)
     {
         return view("_personagem.ficha", [
-            
+            "titulo" => ($id==0)?"Personagem":"",
         ]);
     }
 }

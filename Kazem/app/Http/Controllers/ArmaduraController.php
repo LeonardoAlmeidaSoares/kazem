@@ -18,7 +18,8 @@ class ArmaduraController extends Controller
         //Listo todas as raçãs cadastradas
         $model =  ArmaduraModel::all(); 
 
-        return view("_armadura.index", [
+        return view("index", [
+            "titulo" => "Armaduras",
             "model" => $model
         ]);
     }
@@ -40,7 +41,7 @@ class ArmaduraController extends Controller
             $model->unidade = $request->unidade;
             $model->ca = $request->ca;
             $model->forca_necessaria = $request->forca_necessaria;
-            $model->desv_furtividade = $request->desv_furtividade;
+            $model->desv_furtividade = isset($request->desv_furtividade)?"S":"N";
             $model->peso = $request->peso;
             
             if ($model->save()){
@@ -51,7 +52,8 @@ class ArmaduraController extends Controller
         }
         else
         {
-            return view("_armadura.form", [
+            return view("form", [
+                "titulo" => "Armaduras",
                 "model" => $model
             ]);
         }

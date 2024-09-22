@@ -91,8 +91,9 @@ class PersonagemModel extends Model
                     'args' => [
                         'id_personagem'
                     ],
+                    'title' => 'Ficha',
                     "target" => "_blank",
-                    'classe' => 'fas fa-edit'
+                    'classe' => 'mdi mdi-account-box-outline'
                 ]
             ]
         );

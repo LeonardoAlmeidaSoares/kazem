@@ -17,7 +17,8 @@ class EquipamentoController extends Controller
 
         $model =  EquipamentoModel::all(); 
 
-        return view("_equipamento.index", [
+        return view("index", [
+            "titulo" => "Equipamentos",
             "model" => $model
         ]);
     }

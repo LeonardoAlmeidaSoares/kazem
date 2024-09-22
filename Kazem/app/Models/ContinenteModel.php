@@ -50,7 +50,8 @@ class ContinenteModel extends Model
                     'args' => [
                         'id_continente'
                     ],
-                    'classe' => 'far fa-edit'
+                    'title' => 'Editar',
+                    'classe' => 'mdi mdi-tooltip-edit'
                 ]
             ]
         );

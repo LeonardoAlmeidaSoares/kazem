@@ -3,7 +3,7 @@
         <section class="charname">
             <label for="charname">Nome do Personagem</label>
             <input name="charname" wire:model="nome" />
-            <input type="hidden" wire:model="id_personagem" />
+            <input type="hidden" wire:model="id_personagem" id="id_personagem"/>
         </section>
         <section class="misc">
             <ul>
@@ -452,7 +452,8 @@
         <section class="linha1">
            <div class="box textblock features">
                 <label for="otherprofs">Aparencia do Personagem</label>
-                <img  class="aparencia" src="{{ url($caminho_imagem) }}" />
+                <img  class="aparencia" src="{{ Storage::url($imagem) }}" style="cursor:pointer;"/>
+                <input type="hidden" name="caminho_imagem" id="caminho_imagem" wire:model="imagem" wire:change="mudarimagem(this)" />
             </div>
             <div class="box textblock hist_personagem">
                 <label for="hist_personagem">Histórico do Personagem</label>
@@ -467,7 +468,7 @@
              </div>
              <div class="otherprofs box textblock">
                  <label for="otherprofs">Características e Traços Adicionais</label>
-                 <textarea name="otherprofs" wire:model="carac_tracos_adicionais"></textarea>
+                 <textarea name="outras_caracteristicas" id="outras_caracteristicas" wire:model="carac_tracos_adicionais"></textarea>
              </div>
              <div class="otherprofs box textblock">
                 <label for="otherprofs">Tesouro</label>

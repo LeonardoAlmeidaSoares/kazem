@@ -65,7 +65,8 @@ class CidadeModel extends Model
                     'args' => [
                         'id_cidade'
                     ],
-                    'classe' => 'far fa-edit'
+                    'title' => 'Editar',
+                    'classe' => 'mdi mdi-tooltip-edit'
                 ]
             ]
         );

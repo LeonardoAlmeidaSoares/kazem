@@ -51,7 +51,8 @@ class EscolaMagiaModel extends Model
                     'args' => [
                         'id_escola_magia'
                     ],
-                    'classe' => 'far fa-edit'
+                     'title' => 'Editar',
+                    'classe' => 'mdi mdi-tooltip-edit'
                 ]
             ]
         );

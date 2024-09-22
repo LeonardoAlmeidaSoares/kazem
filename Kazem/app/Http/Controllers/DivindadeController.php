@@ -17,7 +17,8 @@ class DivindadeController extends Controller
 
         $model =  DivindadeModel::all(); 
 
-        return view("_divindade.index", [
+        return view("index", [
+            "titulo" => "Divindades",
             "model" => $model
         ]);
     }

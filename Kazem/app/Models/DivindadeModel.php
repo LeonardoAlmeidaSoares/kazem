@@ -71,7 +71,8 @@ class DivindadeModel extends Model
                     'args' => [
                         'id_divindade'
                     ],
-                    'classe' => 'far fa-edit'
+                     'title' => 'Editar',
+                    'classe' => 'mdi mdi-tooltip-edit'
                 ]
             ]
         );

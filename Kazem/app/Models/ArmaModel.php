@@ -77,8 +77,50 @@ class ArmaModel extends Model
                     'args' => [
                         'id_arma'
                     ],
-                    'classe' => 'far fa-edit'
+                    'title' => 'Editar', 
+                    'classe' => 'mdi mdi-tooltip-edit'
                 ]
+            ]
+        );
+    }
+
+    protected function form(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => 
+            [
+                [
+                    "name" => 'nome',
+                    "label" => "Nome",
+                    'type' => 'text',
+                    'class'=> 'col-6'
+                ], 
+                [
+                    "name" => 'tipo',
+                    "label" => "Tipo",
+                    'type' => 'select',
+                    'content'=> ['Perfurante' => "Perfuração", 'Concussivo' => 'Concussão', 'Cortante' => 'Cortante'],
+                    'class'=> 'col-2'
+                ], 
+                [
+                    "name" => 'dano',
+                    "label" => "Dano",
+                    'type' => 'text',
+                    'class'=> 'col-1'
+                ],
+                [
+                    "name" => 'peso',
+                    "label" => "Peso",
+                    'type' => 'text',
+                    'class'=> 'col-1'
+                ], 
+                [
+                    "name" => 'valor',
+                    "label" => "Valor",
+                    'type' => 'valor_unidade',
+                    'class'=> 'col-2'
+                ], 
+              
             ]
         );
     }

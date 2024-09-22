@@ -57,7 +57,8 @@ class IdiomaModel extends Model
                     'args' => [
                         'id_idioma'
                     ],
-                    'classe' => 'far fa-edit'
+                     'title' => 'Editar',
+                    'classe' => 'mdi mdi-tooltip-edit'
                 ]
             ]
         );

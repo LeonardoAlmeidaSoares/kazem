@@ -19,7 +19,8 @@ class TalentoController extends Controller
         //Listo todas as raçãs cadastradas
         $model =  TalentoModel::all(); 
 
-        return view("_talento.index", [
+        return view("index", [
+            "titulo" => "Talentos",
             "model" => $model
         ]);
     }

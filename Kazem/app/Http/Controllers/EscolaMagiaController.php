@@ -18,7 +18,8 @@ class EscolaMagiaController extends Controller
         //Listo todas os cadastradas
         $model =  EscolaMagiaModel::all(); 
 
-        return view("_escolamagia.index", [
+        return view("index", [
+            "titulo" => "Escolas de Magia",
             "model" => $model
         ]);
     }

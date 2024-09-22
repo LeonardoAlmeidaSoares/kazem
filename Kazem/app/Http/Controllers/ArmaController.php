@@ -19,7 +19,8 @@ class ArmaController extends Controller
         //Listo todas as raçãs cadastradas
         $model =  ArmaModel::all(); 
 
-        return view("_arma.index", [
+        return view("index", [
+            "titulo" => "Armas",
             "model" => $model
         ]);
     }
@@ -43,7 +44,6 @@ class ArmaController extends Controller
             $model->dano = $request->dano;
             $model->propriedades = $request->propriedades;
             $model->peso = $request->peso;
-
             
             if ($model->save()){
                 return redirect("arma")->with("msg_sucesso", "Cadastro Realizado com Sucesso");
@@ -53,7 +53,8 @@ class ArmaController extends Controller
         }
         else
         {
-            return view("_arma.form", [
+            return view("form", [
+                "titulo" => "Armas",
                 "model" => $model
             ]);
         }

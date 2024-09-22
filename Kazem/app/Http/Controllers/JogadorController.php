@@ -18,7 +18,8 @@ class JogadorController extends Controller
         //Listo todas os cadastradas
         $model =  JogadorModel::all(); 
 
-        return view("_jogadores.index", [
+        return view("index", [
+            "titulo" => "Jogadores",
             "model" => $model
         ]);
     }

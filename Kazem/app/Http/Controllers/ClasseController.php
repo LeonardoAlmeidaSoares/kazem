@@ -19,7 +19,8 @@ class ClasseController extends Controller
         //Listo todas as raçãs cadastradas
         $model =  ClasseModel::all(); 
 
-        return view("_classe.index", [
+        return view("index", [
+            "titulo" => "Classes",
             "model" => $model
         ]);
     }
@@ -36,7 +37,7 @@ class ClasseController extends Controller
         if ($request->getMethod() == "POST")
         {
             $model->nome = $request->nome;
-            $model->somente_npc = $request->somente_npc;
+            $model->somente_npc = isset($request->somente_npc)?'S':'N';
             $model->descricao = $request->descricao;
             $model->dado_vida = $request->dado_vida;
 
@@ -48,7 +49,8 @@ class ClasseController extends Controller
         }
         else
         {
-            return view("_classe.form", [
+            return view("form", [
+                "titulo" => "Classes",
                 "model" => $model
             ]);
         }

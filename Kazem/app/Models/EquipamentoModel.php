@@ -68,7 +68,8 @@ class EquipamentoModel extends Model
                     'args' => [
                         'id_equipamento'
                     ],
-                    'classe' => 'far fa-edit'
+                    'title' => 'Editar',
+                    'classe' => 'mdi mdi-tooltip-edit'
                 ]
             ]
         );

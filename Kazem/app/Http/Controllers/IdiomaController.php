@@ -18,7 +18,8 @@ class IdiomaController extends Controller
         //Listo todas as raçãs cadastradas
         $model =  IdiomaModel::all(); 
 
-        return view("_idioma.index", [
+        return view("index", [
+            "titulo" => "Idiomas",
             "model" => $model
         ]);
     }

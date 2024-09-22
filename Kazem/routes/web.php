@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BuscaController;
+use App\Http\Controllers\IAController;
 use App\Livewire\FichaPersonagem;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RacaController;
@@ -18,15 +19,24 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/generate-image', [IAController::class, 'generateImage']);
+
 Route::controller(BuscaController::class)->group(function () {
     Route::post('busca', 'index');
 });
 
 Route::controller(PersonagemController::class)->group(function () {
     Route::get('personagem', 'index');
+    Route::post('atualizar-imagem','atualizarImagem');
 });
 
 Route::get('/personagem/ficha/{id}', FichaPersonagem::class);
+
+//
+Route::get('/ia/send', [IAController::class, 'sendMessage']);
+Route::get('/kazemTalk', [IAController::class, 'continueConversation']);
+
+
 
 Route::controller(RacaController::class)->group(function () {
     Route::get('raca', 'index');
@@ -112,4 +122,11 @@ use App\Http\Controllers\DivindadeController;
 Route::controller(DivindadeController::class)->group(function () {
     Route::get('divindade', 'index');
     Route::match(['get', 'post'], 'divindade/form/{id}', 'form');
+});
+
+use App\Http\Controllers\OrganizacaoController;
+
+Route::controller(OrganizacaoController::class)->group(function () {
+    Route::get('organizacao', 'index');
+    Route::match(['get', 'post'], 'organizacao/form/{id}', 'form');
 });

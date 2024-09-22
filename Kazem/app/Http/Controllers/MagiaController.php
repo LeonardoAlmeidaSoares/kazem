@@ -19,7 +19,8 @@ class MagiaController extends Controller
         //Listo todas os cadastradas
         $model =  MagiaModel::all(); 
 
-        return view("_magia.index", [
+        return view("index", [
+            "titulo" => "Magias",
             "model" => $model
         ]);
     }
