@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Skydash Admin</title>
+    <title>{{ env("APP_NAME") }}</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="{{ url('assets/vendors/feather/feather.css') }}">
     <link rel="stylesheet" href="{{ url('assets/vendors/ti-icons/css/themify-icons.css') }}">
@@ -32,10 +32,10 @@
         <!-- partial:../../partials/_navbar.html -->
         <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
-                <a class="navbar-brand brand-logo me-5" href="../../index.html">
+                <a class="navbar-brand brand-logo me-5" href="{{ url('') }}">
                     <img src="../../assets/images/logo.svg" class="me-2" alt="logo" />
                 </a>
-                <a class="navbar-brand brand-logo-mini" href="../../index.html">
+                <a class="navbar-brand brand-logo-mini" href="{{ url('') }}">
                     <img src="../../assets/images/logo-mini.svg" alt="logo" />
                 </a>
             </div>
@@ -53,8 +53,8 @@
                             </div>
                             <form class="position-relative" data-bs-toggle="search" data-bs-display="static"
                                 method="POST" action="{{ url('busca') }}">
-                                <input type="text" class="form-control" id="navbar-search-input"
-                                    placeholder="Search now" aria-label="search" aria-describedby="search">
+                                <input type="text" class="form-control" id="navbar-search-input" name="busca"
+                                    placeholder="Buscar" aria-label="buscar" aria-describedby="buscar">
                             </form>
                         </div>
                     </li>
@@ -135,7 +135,7 @@
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="../../index.html">
+                        <a class="nav-link" href="{{ url('') }}">
                             <i class="icon-grid menu-icon"></i>
                             <span class="menu-title">Dashboard</span>
                         </a>
@@ -174,7 +174,7 @@
             <div class="main-panel">
                 <div class="content-wrapper">
                     <div class="row">
-                        <div class="col-lg-12 grid-margin stretch-card">
+                        <div class="col-lg-12 grid-margin ">
                             @yield("content")
                         </div>
                     </div>

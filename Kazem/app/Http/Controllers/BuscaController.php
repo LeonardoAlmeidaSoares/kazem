@@ -15,7 +15,6 @@ class BuscaController extends Controller
     {
         $termo = $request->busca;
 
-
         $sql = "SELECT * FROM
             (select 'Antecedentes' as Tipo, titulo, descricao, concat('antecedente/form/', id_antecedente) as link from kz_antecedente
                     UNION
@@ -46,8 +45,10 @@ class BuscaController extends Controller
                 where titulo like '%$termo%'";
 
         $results =  DB::select($sql);
+
+        //dd($results);
         
-        return view("_busca.index", [
+        return view("resultados_busca", [
             "retorno" => $results,
             "termo" => $termo
         ]);   
