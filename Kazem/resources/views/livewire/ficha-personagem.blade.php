@@ -34,7 +34,13 @@
                     <select name="background" wire:model="id_raca" wire:change="mudarRaca()">
                         <option hidden selected>Selecione</option>
                         @foreach ($racas as $item)
-                            <option value="{{ $item->id_raca}}">{{ $item->titulo }}</option>
+                            <optgroup label="{{ $item->titulo }}">
+                                
+                                @foreach(App\Models\RacaVarianteModel::where(["id_raca" => $item->id_raca])->get() as $raca)
+                                    <option value="{{ $raca->id_raca_variante}}">{{ $raca->nome }}</option>
+                                @endforeach
+                                
+                            </optgroup>
                         @endforeach
                     </select>
                 </li>

@@ -56,7 +56,7 @@ class RacaVarianteModel extends Model
             [
                 [
                     "descricao" => 'edit',
-                    'url' => 'variante/form/',
+                    'url' => 'racavariante/',
                     'args' => [
                         'id_raca',
                         'id_raca_variante'

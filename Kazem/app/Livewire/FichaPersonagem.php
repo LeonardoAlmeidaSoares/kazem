@@ -15,6 +15,7 @@ use App\Models\AntecedenteModel;
 use App\Models\DivindadeModel;
 use App\Models\JogadorModel;
 use App\Models\RacaModel;
+use App\Models\RacaVarianteModel;
 use Livewire\Component;
 
 class FichaPersonagem extends Component
@@ -233,23 +234,17 @@ class FichaPersonagem extends Component
         $this->intimidacao = ($this->treinamento_intimidacao) ? $this->mod_car + $this->bonus_proficiencia: $this->mod_car;
         $this->persuasao = ($this->treinamento_persuasao) ? $this->mod_car + $this->bonus_proficiencia: $this->mod_car;
     }
-
+    
     public function mudarRaca()
     {
         if ($this->id_raca > 0) {
-            $raca = RacaModel::find($this->id_raca);
-            $this->deslocamento = strval($raca->deslocamento) . "m";
+            $raca = RacaVarianteModel::find($this->id_raca);
+            $this->deslocamento = strval($raca->racaPai->deslocamento) . "m";
         }
 
         $this->lastRace = $this->id_raca;
-        
     }
-
-    public function mudarimagem($request)
-    {
-        dd($request);
-    }
-
+    
     public function render(Request $request)
     {
 
@@ -426,7 +421,9 @@ class FichaPersonagem extends Component
 
     public function adicionarAtributos()
     {
-        PersonagemAtributoModel::where('id_personagem', $this->id_personagem)->delete();
+        $item = PersonagemAtributoModel::where('id_personagem', $this->id_personagem)->get();
+        if($item->count() > 0)
+            PersonagemAtributoModel::where('id_personagem', $this->id_personagem)->delete();
 
         $atributos = new PersonagemAtributoModel([
             "id_personagem" => $this->id_personagem,
@@ -505,8 +502,9 @@ class FichaPersonagem extends Component
 
     public function adiconarArmas()
     {
-
-        PersonagemArmaModel::find( $this->id_personagem)->delete();
+        $item = PersonagemArmaModel::where( ["id_personagem" => $this->id_personagem])->get();
+        if($item->count() > 0)
+            PersonagemArmaModel::where( ["id_personagem" => $this->id_personagem])->delete();
 
         for($i=1; $i<=3; $i++)
         {

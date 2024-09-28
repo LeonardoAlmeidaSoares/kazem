@@ -38,6 +38,7 @@ class ContinenteController extends Controller
         if ($request->getMethod() == "POST")
         {
             $model->nome = $request->nome;
+            $model->descricao = $request->descricao;
 
             if ($model->save()){
                 return redirect("continente")->with("msg_sucesso", "Cadastro Realizado com Sucesso");
@@ -47,7 +48,8 @@ class ContinenteController extends Controller
         }
         else
         {
-            return view("_continente.form", [
+            return view("form", [
+                "titulo" => "Continentes",
                 "model" => $model
             ]);
         }

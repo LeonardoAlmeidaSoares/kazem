@@ -43,7 +43,7 @@ Route::controller(RacaController::class)->group(function () {
     Route::match(['get', 'post'], 'raca/form/{id}', 'form');
 
     Route::get('racavariante/{id}', 'variacao');
-    Route::match(['get', 'post'], 'variante/form/{idRaca}/{id}', 'varianteform');
+    Route::match(['get', 'post'], 'racavariante/{idRaca}/{id}', 'varianteform');
 });
 
 Route::controller(ContinenteController::class)->group(function () {

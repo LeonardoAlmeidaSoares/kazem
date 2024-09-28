@@ -15,7 +15,8 @@ class ContinenteModel extends Model
     public $primaryKey = "id_continente";
 
     public $filalble = [
-        "nome"
+        "nome",
+        "descricao"
     ];
 
     protected function exibir(): Attribute
@@ -52,6 +53,27 @@ class ContinenteModel extends Model
                     ],
                     'title' => 'Editar',
                     'classe' => 'mdi mdi-tooltip-edit'
+                ]
+            ]
+        );
+    }
+
+    protected function form(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => 
+            [
+                [
+                    "name" => 'nome',
+                    "label" => "Nome",
+                    'type' => 'text',
+                    'class'=> 'col-10'
+                ],
+                [
+                    "name" => 'descricao',
+                    "label" => "Descrição",
+                    'type' => 'textarea',
+                    'class'=> 'col-12'
                 ]
             ]
         );

@@ -42,6 +42,7 @@ class DivindadeController extends Controller
             $model->posto = $request->posto;
             $model->arma_predileta = $request->arma_predileta;
             $model->aspecto = $request->aspecto;
+            $model->descricao = $request->descricao;
             
             if ($model->save()){
                 return redirect("divindade")->with("msg_sucesso", "Cadastro Realizado com Sucesso");
@@ -51,7 +52,8 @@ class DivindadeController extends Controller
         }
         else
         {
-            return view("_divindade.form", [
+            return view("form", [
+                "titulo" => "Divindades",
                 "model" => $model
             ]);
         }

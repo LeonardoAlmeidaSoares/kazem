@@ -90,7 +90,7 @@ class RacaController extends Controller
                 $model->descricao = $request->descricao;
     
             if ($model->save()){
-                return redirect("raca")->with("msg_sucesso", "Cadastro Realizado com Sucesso");
+                return redirect("racavariante/$idRaca")->with("msg_sucesso", "Cadastro Realizado com Sucesso");
             } else {
                 return back()->withInput();
             }
