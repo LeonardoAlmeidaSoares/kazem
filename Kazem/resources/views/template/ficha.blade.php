@@ -23,6 +23,9 @@
     <meta name="theme-color" content="#ffffff">
     <script src="{{ asset('js/config.js') }}"></script>
     <script src="{{ asset('vendors/overlayscrollbars/OverlayScrollbars.min.js') }}"></script>
+    <!-- jQuery Modal -->
+ 
+    
     @livewireStyles
 
     <!-- ===============================================-->
@@ -34,16 +37,19 @@
         rel="stylesheet">
 
     <link href="{{ asset('css/sheet.css') }}" rel="stylesheet" id="user-style-default">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 </head>
 
 <body>
     @yield('content')
+
     @livewireScripts
 </body>
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"
     integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
 
 <script>
     $(function() {

@@ -8,7 +8,7 @@
         <section class="misc">
             <ul>
                 <li>
-                    <label for="classlevel">Classe e Nível</label>
+                    <label for="classlevel">Classe e Nível <a href="#ex1" rel="modal:open" title="Subir Nível" style="float: right;font-size: 16px;margin-right: 10px;text-decoration: none;">+</a></label>
                     <input name="classlevel" placeholder="" wire:model="texto_classe" />
                 </li>
                 <li>
@@ -213,7 +213,7 @@
             </div>
             <div class="otherprofs box textblock">
                 <label for="otherprofs">Proficiencias e Idiomas</label>
-                <textarea name="otherprofs" style="height: 24.5em;"></textarea>
+                <textarea name="otherprofs" style="height: 24.5em;" wire:model="lista_proficiencias"></textarea>
             </div>
         </section>
         <section class="linha1">
@@ -486,4 +486,18 @@
 
     <hr  class="linha_separadora"/>
     <button type="submit" style="width: 100%; margin-bottom: 10px;">Salvar</button>
+
+    <!-- Div Contendo os Níveis -->
+    <div id="ex1" class="modal">
+        <p>Níveis de {{ $nome }}</p>
+        <table>
+            <thead>
+                <tr>
+                    <thead>Nível</thead>
+                </tr>
+            </thead>
+        </table>
+        <!--a href="#" rel="modal:close">Close</a-->
+      </div>
+
 </form>

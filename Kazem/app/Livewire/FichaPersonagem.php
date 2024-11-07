@@ -7,6 +7,7 @@ use App\Models\PersonagemArmaModel;
 use App\Models\PersonagemAtributoModel;
 use App\Models\PersonagemModel;
 use App\Models\PersonagemPericiaModel;
+use App\Models\PersonagemProficienciaModel;
 use App\Models\PersonagemRiquezaModel;
 use App\Models\PersonagemTextoModel;
 use Illuminate\Http\Request;
@@ -164,6 +165,9 @@ class FichaPersonagem extends Component
                          "investigacao" => "Int", "medicina" => "Sab", "natureza" => "Int", "percepcao" => "Sab", "persuasao" => "Car", 
                          "prestidigitacao" => "Des", "religiao" => "Int", "sobrevivencia" => "Sab"];
 
+
+    public $itens_proficiencias = [];
+    public $lista_proficiencias = "";
 
     public function ajustaProficiencia()
     {
@@ -363,6 +367,15 @@ class FichaPersonagem extends Component
                     $this->getDadosArma($contadorArmas);
                 } 
             }
+
+            $lista_proficiencias = "";
+
+            foreach($this->personagem->proficiencias as $item)
+            {
+                if ($this->lista_proficiencias != "") $this->lista_proficiencias .= "\n";
+                $this->lista_proficiencias .= $item->proficiencia->nome;
+                array_push($this->itens_proficiencias, $this->personagem->proficiencias[0]->id_proficiencia);
+            }
             
         } else {
             $this->personagem = new PersonagemModel();
@@ -521,6 +534,24 @@ class FichaPersonagem extends Component
                 $arma->save();
             }
         }
+
+    }
+
+    public function adicionarProficiencias()
+    {
+        $item = PersonagemPericiaModel::where( ["id_personagem" => $this->id_personagem])->get();
+        if($item->count() > 0)
+            PersonagemPericiaModel::where( ["id_personagem" => $this->id_personagem])->delete();
+
+        foreach($this->itens_proficiencias as $item)
+        {
+            $proficiencia = new PersonagemProficienciaModel([
+                "id_personagem" => $this->id_personagem,
+                "id_proficiencia" => $item->proficiencia
+            ]);
+
+            $proficiencia->save();
+        }    
 
     }
 

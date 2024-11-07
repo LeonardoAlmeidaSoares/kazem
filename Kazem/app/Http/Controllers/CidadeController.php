@@ -51,8 +51,9 @@ class CidadeController extends Controller
         }
         else
         {
-            return view("_cidade.form", [
+            return view("form", [
                 "model" => $model,
+                "titulo" => "Cidades",
                 "continentes" => $continentes
             ]);
         }

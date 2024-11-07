@@ -11,15 +11,26 @@ use App\Http\Controllers\CidadeController;
 use App\Http\Controllers\JogadorController;
 use App\Http\Controllers\AntecedenteController;
 use App\Http\Controllers\PersonagemController;
-
-
-
-
-Route::get('/', function () {
-    return view('welcome');
-});
+use App\Http\Controllers\ProficienciaController;
+use App\Http\Controllers\TalentoController;
+use App\Http\Controllers\IdiomaController;
+use App\Http\Controllers\EscolaMagiaController;
+use App\Http\Controllers\MagiaController;
+use App\Http\Controllers\ArmaController;
+use App\Http\Controllers\ArmaduraController;
+use App\Http\Controllers\EquipamentoController;
+use App\Http\Controllers\DivindadeController;
+use App\Http\Controllers\EspecializacaoController;
+use App\Http\Controllers\OrganizacaoController;
+use App\Http\Controllers\DashboardController;
 
 Route::get('/generate-image', [IAController::class, 'generateImage']);
+Route::get('/personagem/ficha/{id}', FichaPersonagem::class);
+
+Route::controller(DashboardController::class)->group(function () {
+    Route::get('/', 'index');
+    Route::get('dashboard-escudo', 'escudo');
+});
 
 Route::controller(BuscaController::class)->group(function () {
     Route::post('busca', 'index');
@@ -29,14 +40,6 @@ Route::controller(PersonagemController::class)->group(function () {
     Route::get('personagem', 'index');
     Route::post('atualizar-imagem','atualizarImagem');
 });
-
-Route::get('/personagem/ficha/{id}', FichaPersonagem::class);
-
-//
-Route::get('/ia/send', [IAController::class, 'sendMessage']);
-Route::get('/kazemTalk', [IAController::class, 'continueConversation']);
-
-
 
 Route::controller(RacaController::class)->group(function () {
     Route::get('raca', 'index');
@@ -71,65 +74,60 @@ Route::controller(AntecedenteController::class)->group(function () {
     Route::match(['get', 'post'], 'antecedente/form/{id}', 'form');
 });
 
-use App\Http\Controllers\TalentoController;
-
 Route::controller(TalentoController::class)->group(function () {
     Route::get('talento', 'index');
     Route::match(['get', 'post'], 'talento/form/{id}', 'form');
 });
-
-use App\Http\Controllers\IdiomaController;
 
 Route::controller(IdiomaController::class)->group(function () {
     Route::get('idioma', 'index');
     Route::match(['get', 'post'], 'idioma/form/{id}', 'form');
 });
 
-use App\Http\Controllers\EscolaMagiaController;
-
 Route::controller(EscolaMagiaController::class)->group(function () {
     Route::get('escolamagia', 'index');
     Route::match(['get', 'post'], 'escolamagia/form/{id}', 'form');
 });
-
-use App\Http\Controllers\MagiaController;
 
 Route::controller(MagiaController::class)->group(function () {
     Route::get('magia', 'index');
     Route::match(['get', 'post'], 'magia/form/{id}', 'form');
 });
 
-use App\Http\Controllers\ArmaController;
-
 Route::controller(ArmaController::class)->group(function () {
     Route::get('arma', 'index');
     Route::match(['get', 'post'], 'arma/form/{id}', 'form');
 });
-
-use App\Http\Controllers\ArmaduraController;
 
 Route::controller(ArmaduraController::class)->group(function () {
     Route::get('armadura', 'index');
     Route::match(['get', 'post'], 'armadura/form/{id}', 'form');
 });
 
-use App\Http\Controllers\EquipamentoController;
-
 Route::controller(EquipamentoController::class)->group(function () {
     Route::get('equipamento', 'index');
     Route::match(['get', 'post'], 'equipamento/form/{id}', 'form');
 });
-
-use App\Http\Controllers\DivindadeController;
 
 Route::controller(DivindadeController::class)->group(function () {
     Route::get('divindade', 'index');
     Route::match(['get', 'post'], 'divindade/form/{id}', 'form');
 });
 
-use App\Http\Controllers\OrganizacaoController;
-
 Route::controller(OrganizacaoController::class)->group(function () {
     Route::get('organizacao', 'index');
     Route::match(['get', 'post'], 'organizacao/form/{id}', 'form');
 });
+
+Route::controller(EspecializacaoController::class)->group(function () {
+    Route::get('especializacao', 'index');
+    Route::match(['get', 'post'], 'especializacao/form/{id}', 'form');
+});
+
+Route::controller(ProficienciaController::class)->group(function () {
+    Route::get('proficiencia', 'index');
+    Route::match(['get', 'post'], 'proficiencia/form/{id}', 'form');
+});
+
+Route::get('/ia/send', [IAController::class, 'sendMessage']);
+Route::get('/kazemTalk', [IAController::class, 'continueConversation']);

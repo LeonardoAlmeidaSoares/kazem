@@ -26,12 +26,6 @@ class PersonagemModel extends Model
         "id_divindade",
         "alinhamento",
         "imagem",  
-        "attr_for", 
-        "attr_des",
-        "attr_con",
-        "attr_int",
-        "attr_sab",
-        "attr_car"
     ];
 
     public function atributos(): HasOne
@@ -57,6 +51,11 @@ class PersonagemModel extends Model
     public function armas(): HasMany
     {
         return $this->hasMany(PersonagemArmaModel::class, "id_personagem", "id_personagem");
+    }
+
+    public function proficiencias(): HasMany
+    {
+        return $this->hasMany(PersonagemProficienciaModel::class, "id_personagem", "id_personagem");
     }
 
     protected function exibir(): Attribute

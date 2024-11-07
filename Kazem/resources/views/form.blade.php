@@ -1,6 +1,10 @@
 @extends('template.admin')
 
 @section('content')
+
+
+
+
     <div class="card">
         <div class="card-body">
             <h4 class="card-title">{{ $titulo }}</h4>
@@ -15,6 +19,9 @@
                 @csrf
 
                 @foreach ($model->form as $item)
+
+
+
 
                     @if ($item['type'] == 'text')
                         <div class="{{ $item['class'] }}">
@@ -33,6 +40,23 @@
                                 <textarea class="form-control textarea form-control-sm" rows=10 name="{{ $item['name'] }}" id="{{ $item['name'] }}">
                                 {!! trim($model->{$item['name']}) !!}
                             </textarea>
+                            </div>
+                        </div>
+                    @endif
+
+                    @if($item['type'] == 'model')
+                    
+    
+
+                        <div class="{{ $item['class'] }}">
+                            <div class="form-group ">
+                                <label class="col-form-label">{{ ucwords($item['label']) }}</label>
+                                <select class="form-control form-control-sm select2" name="{{ $item['name'] }}" id="{{ $item['name'] }}">
+                                    <option selected hidden>Selecione</option>
+                                    @foreach($item ["content"]::get() as $internal)
+                                        <option value="{{ $internal->{$item ["content_id"]} }}" @if($model->{$item['name']} == $internal->{$item ["content_id"]}) selected @endif >{{ $internal->{$item ["content_text"]} }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
                     @endif

@@ -71,4 +71,33 @@ class CidadeModel extends Model
             ]
         );
     }
+    protected function form(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => 
+            [
+                [
+                    "name" => 'nome',
+                    "label" => "Nome",
+                    'type' => 'text',
+                    'class'=> 'col-6'
+                ], 
+                [
+                    "name" => 'id_continente',
+                    "label" => "Continente",
+                    'type' => 'model',
+                    'content' => new \App\Models\ContinenteModel,
+                    'content_id' => 'id_continente',
+                    'content_text' => 'nome',
+                    'class'=> 'col-6'
+                ], 
+                [
+                    "name" => 'descricao',
+                    "label" => "Descrição",
+                    'type' => 'textarea',
+                    'class'=> 'col-12'
+                ]
+            ]
+        );
+    }
 }
